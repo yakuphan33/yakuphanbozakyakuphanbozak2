@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+int main()
+{
+  char *pdizi[3];
+  int id;
+
+  /* Bellek tahsisi */
+  for (id=0; id<3; id++) {
+       pdizi[id] = (char *) malloc(20 * sizeof(char));
+  }
+
+  /* Dizi atama */
+  for (id=0; id<3; id++) {
+       strcpy(pdizi[id], "Karakter dizisi");
+  }
+  /* Yazdırma */
+  for (id=0; id<3; id++) {
+       printf ("%s\n", pdizi[id]);
+  }
+
+  /* Bellek boşaltma */
+  for (id=0; id<3; id++) {
+       free(pdizi[id]);
+  }
+
+  return 0;
+}
