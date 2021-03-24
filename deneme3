@@ -1,0 +1,15 @@
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+  char cdizi[200];
+
+  snprintf(cdizi, sizeof(cdizi), "%d.%s ", 1, "Karakter dizisi");
+  snprintf(cdizi + strlen(cdizi), sizeof(cdizi) - strlen(cdizi), "ile %c %d %f %s ", 'A', 121, 75.89, " değişken değerlerinin");
+  snprintf(cdizi + strlen(cdizi), sizeof(cdizi) - strlen(cdizi), "%s", "tek bir diziye aktarılması");
+
+  printf(cdizi);
+
+  return 0;
+}
