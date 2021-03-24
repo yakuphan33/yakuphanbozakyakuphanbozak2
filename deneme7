@@ -1,0 +1,105 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <locale.h> // Türkçe karakterler için
+#include <ctype.h>
+
+char* bg_strtoupr(char *str);
+char* bg_strtolwr(char *str);
+
+int main(void)
+{
+    char *pdizi = malloc(50);
+
+    // Türkçe karakterler için
+	setlocale(LC_ALL, "Turkish");
+
+    strcpy(pdizi, "çağbıcidöeşfü");
+    printf("%s\n", pdizi);
+
+    // Büyük karakterlere çevirme
+    printf("%s\n", bg_strtoupr(pdizi));
+
+    // Küçük karakterlere çevirme
+    printf("%s\n", bg_strtolwr(pdizi));
+
+    free(pdizi);
+
+    return 0;
+}
+
+char* bg_strtoupr(char *str)
+{
+  char *s = str;
+
+  while (*s) {
+    if (isalpha(*s)) {
+        switch(*s) {
+          case 'ç':
+             *s = 'Ç';
+             break;
+          case 'ğ':
+             *s = 'Ğ';
+             break;
+          case 'ı':
+             *s = 'I';
+             break;
+          case 'i':
+             *s = 'İ';
+             break;
+          case 'ö':
+             *s = 'Ö';
+             break;
+          case 'ş':
+             *s = 'Ş';
+             break;
+          case 'ü':
+             *s = 'Ü';
+             break;
+          default:
+             if ((*s)>=97 && (*s)<=122) *s = (*s) - 32;
+        }
+    }
+    s++;
+  }
+
+  return str;
+}
+
+char* bg_strtolwr(char *str)
+{
+  char *s = str;
+
+  while (*s) {
+    if (isalpha(*s)) {
+        switch(*s) {
+          case 'Ç':
+             *s = 'ç';
+             break;
+          case 'Ğ':
+             *s = 'ğ';
+             break;
+          case 'I':
+             *s = 'ı';
+             break;
+          case 'İ':
+             *s = 'i';
+             break;
+          case 'Ö':
+             *s = 'ö';
+             break;
+          case 'Ş':
+             *s = 'ş';
+             break;
+          case 'Ü':
+             *s = 'ü';
+             break;
+          default:
+             if ((*s)>=65 && (*s)<=90) *s = (*s) + 32;
+        }
+    }
+    s++;
+  }
+
+  return str;
+}
