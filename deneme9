@@ -1,0 +1,20 @@
+#include <stdio.h>
+#include <string.h>
+
+void fonk(char *cp);
+
+int main(void)
+{
+  fonk("Bilgisayar");
+
+  return 0;
+}
+
+void fonk(char *cp)
+{
+  int id = strlen(cp)-1;
+
+  for ( ; id>=0; id--) {
+       printf("%c", *(cp+id));
+  }
+}
